@@ -8,7 +8,7 @@ import java.util.Date
 @Table(name="seguros")
 data class Seguro(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idSeguro: Int,
+    var idSeguro: Int?,
     @Column(nullable = false, length = 10)
     val nif: String,
     @Column(nullable = false, length = 100)
@@ -17,10 +17,10 @@ data class Seguro(
     val ape1: String,
     @Column(length = 100)
     val ape2: String?,
-    @Column(name = "edad",nullable = false)
+    @Column(name = "edad")
     @Check(constraints = "edad > 0")
     val edad: Int,
-    @Column(name = "num_hijos",nullable = false)
+    @Column(name = "num_hijos")
     @Check(constraints = "num_hijos > 0")
     val numHijos: Int,
     @Column(nullable = false)
