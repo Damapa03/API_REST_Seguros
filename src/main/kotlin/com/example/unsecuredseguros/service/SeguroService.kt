@@ -35,20 +35,19 @@ class SeguroService {
     }
 
     fun post(seguro: Seguro) {
-//        if (checkIfNull(seguro.nombre)||checkIfNull(seguro.ape1)||checkIfNull(seguro.sexo)){
-//            if (checkDNI(seguro.nif)){
-//                if (checkAge(seguro.edad)){
-//                    if (checkChilds(seguro.numHijos)){
-//                        if (checkCasado(seguro.casado, seguro.numHijos)){
-//                            if (checkEmbarazada(seguro.embarazada, seguro.sexo)){
-//                                seguroRepository.save(seguro)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        seguroRepository.save(seguro)
+        if (checkIfNull(seguro.nombre)||checkIfNull(seguro.ape1)||checkIfNull(seguro.sexo)){
+            if (checkDNI(seguro.nif)){
+                if (checkAge(seguro.edad)){
+                    if (checkChilds(seguro.numHijos)){
+                        if (checkCasado(seguro.casado, seguro.numHijos)){
+                            if (checkEmbarazada(seguro.embarazada, seguro.sexo)){
+                                seguroRepository.save(seguro)
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
     }
 

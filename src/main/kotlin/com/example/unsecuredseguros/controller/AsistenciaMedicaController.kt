@@ -17,27 +17,32 @@ class AsistenciaMedicaController {
     private lateinit var asistenciaMedicaService: AsistenciaMedicaService
 
     @GetMapping
-    fun getSeguros(): List<AsistenciaMedica> {
+    fun getAsistencias(): List<AsistenciaMedica> {
+        return asistenciaMedicaService.getAll()
     }
     @GetMapping("/{id}")
     fun getById(
-        @PathVariable("id") id: String
-    ): AsistenciaMedica {
+        @PathVariable("id") id: Int
+    ): AsistenciaMedica? {
+        return asistenciaMedicaService.getById(id)
     }
     @PostMapping
-    fun post(@RequestBody asistenciaMedica : AsistenciaMedica){
+    fun post(@RequestBody asistenciaMedica : AsistenciaMedica): ResponseEntity<Any> {
+        return asistenciaMedicaService.post(asistenciaMedica)
     }
 
     @PutMapping("/{id}")
     fun putById(
         @PathVariable("id") id: Int,
         @RequestBody asistenciaMedica: AsistenciaMedica
-    ){
+    ): ResponseEntity<AsistenciaMedica> {
+        return asistenciaMedicaService.put(id,asistenciaMedica)
     }
 
     @DeleteMapping("/{id}")
     fun deleteById(
         @PathVariable("id") id: Int
-    ){
+    ): ResponseEntity<Any> {
+        return asistenciaMedicaService.delete(id)
     }
 }
